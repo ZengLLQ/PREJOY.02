@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { GlassCard } from "./GlassCard";
 
-const lines = ["PRE-JOY.02", "i can barely", "think"];
+const lines = ["i can barely", "think"];
 
 const MaskedLine = ({ text, delay, className }) => (
   <div className="overflow-hidden">
@@ -29,7 +29,7 @@ export const Hero = () => {
             {lines.map((line, i) => (
               <MaskedLine key={line} text={line} delay={0.45 + i * 0.18} className="text-5xl sm:text-6xl lg:text-7xl" />
             ))}
-            <MaskedLine text="right now" delay={1.0} className="text-5xl sm:text-6xl lg:text-7xl text-purple-300" />
+            <MaskedLine text="right now" delay={0.81} className="text-5xl sm:text-6xl lg:text-7xl text-purple-300" />
           </h1>
 
           <motion.div
