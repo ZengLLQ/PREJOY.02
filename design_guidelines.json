@@ -1,0 +1,82 @@
+{
+  "project_context": {
+    "type": "landing_page",
+    "description": "A heartfelt, single-page emotional farewell letter from 'jaycee' to 'Michelle' who is leaving for China. Features a dark theme with a 3D flowing purple aurora/silk background, glowing stars, and large frosted glassmorphic cards with bold typography.",
+    "target_device": "mobile-first",
+    "tone": "Emotional, intimate, cinematic, magical, twilight-sparkle inspired"
+  },
+  "colors": {
+    "background": "#030005",
+    "primary": "#8B5CF6",
+    "secondary": "#C084FC",
+    "accent": "#E9D5FF",
+    "text_primary": "#FFFFFF",
+    "text_secondary": "#E5E7EB",
+    "glass_bg": "rgba(255, 255, 255, 0.03)",
+    "glass_border": "rgba(255, 255, 255, 0.08)",
+    "twilight_glow": "rgba(139, 92, 246, 0.5)",
+    "forbidden_colors": ["#7351B7", "teal green", "teal blue", "#1B93A4"]
+  },
+  "typography": {
+    "fonts": {
+      "heading": "Outfit, sans-serif",
+      "body": "Cormorant Garamond, serif",
+      "signature": "Caveat, cursive"
+    },
+    "rules": {
+      "h1": "text-5xl sm:text-6xl tracking-tighter font-bold text-white",
+      "body": "text-lg sm:text-xl leading-relaxed text-gray-200 tracking-wide",
+      "signature": "text-4xl text-purple-300",
+      "spacing": "Use generous line-height (leading-loose) and vertical margins (mb-8) for maximum readability on small screens."
+    }
+  },
+  "layouts": {
+    "strategy": "Mobile-first continuous scroll. A fixed, full-viewport 3D canvas sits securely in the background. The foreground consists of a scrollable wrapper containing perfectly padded glassmorphic cards.",
+    "spacing": "p-6 sm:p-12 for the main glassmorphic cards. Massive vertical gaps between content blocks (e.g., pt-32 pb-64) to allow users to pause, breathe, and admire the 3D aurora background.",
+    "cards": "High-end crystal glassmorphism: Use rounded-[2rem] or rounded-3xl. Do not stretch cards full width on mobile; maintain a safe 16px margin on left and right."
+  },
+  "visual_enhancers": {
+    "glassmorphism": "bg-white/[0.03] backdrop-blur-2xl border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.5)] backdrop-saturate-150",
+    "lighting": "Subtle inner glow on the cards to separate them from the dark background.",
+    "twilight_nod": "Include very subtle star/sparkle motifs or glowing purple accents to honor the My Little Pony 'Twilight Sparkle' theme."
+  },
+  "3d_libraries": {
+    "packages_to_install": [
+      "three",
+      "@react-three/fiber",
+      "@react-three/drei",
+      "framer-motion"
+    ],
+    "implementation": "1. Create a <Canvas> component with fixed positioning (inset-0, z-[-1]). 2. Use <MeshDistortMaterial> (from @react-three/drei) on a large plane or sphere, colored in deep purples and violets, slowly animating its distortion and speed to simulate flowing silk/aurora. 3. Layer <Sparkles count={200} scale={15} size={3} speed={0.3} opacity={0.8} color={'#E9D5FF'} /> over the mesh to create the floating magical stars. 4. Use ambient and directional lights with pink/purple hues to beautifully light the silk."
+  },
+  "motion": {
+    "framer_motion": "Wrap each paragraph of the letter in a <motion.p> with 'whileInView' fade-in and slight slide-up animations (initial={{ opacity: 0, y: 30 }}, whileInView={{ opacity: 1, y: 0 }}, viewport={{ once: true, margin: '-20%' }}).",
+    "scroll": "The scroll must feel smooth and deliberate. Reveal text blocks sequentially."
+  },
+  "accessibility": {
+    "contrast": "Ensure pure white text over the dark glass panels passes APCA standards. Use subtle text-shadow if necessary for legibility over bright background nodes.",
+    "aria": "Add aria-hidden='true' to the 3D Canvas container so screen readers skip it.",
+    "data_testid": "Add data-testid='hero-heading', data-testid='letter-card', data-testid='signature' to key elements."
+  },
+  "media": {
+    "image_urls": [],
+    "notes": "No standard images are required. The visual impact is completely driven by the R3F 3D background canvas and the premium glassmorphic UI."
+  },
+  "component_instructions": {
+    "Background3D": "A dedicated React component rendering the Three.js Canvas with the flowing silk (MeshDistortMaterial) and glowing stars (Sparkles).",
+    "GlassCard": "A reusable layout wrapper component that applies the standard glassmorphic utility classes to ensure visual consistency.",
+    "FarewellLetter": "The main view that breaks the long text into manageable array elements mapped to animated paragraphs."
+  },
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Strictly adhere to generating .js files (no .tsx).",
+    "Make sure the 3D background is absolutely or fixed positioned (e.g., fixed inset-0 z-[-1]) behind the content.",
+    "DO NOT use transparent backgrounds on containers that hold text; the glassmorphism backdrop-blur is strictly required to maintain readability.",
+    "Prioritize mobile layout. Test typography size and card padding specifically against mobile dimensions.",
+    "Avoid centering massive blocks of text. Left-align the main body of the letter for a natural, emotional reading flow, while the hero text 'Michelle' can be centered.",
+    "Avoid all default browser scrollbars if possible; hide them to maintain the cinematic feel.",
+    "Break the letter content logically so it doesn't appear as one giant unreadable wall of text.",
+    "Ensure 'Michelle' is highly prominent in the hero section.",
+    "Include the Twilight Sparkle keychain mention gracefully as part of the letter.",
+    "Keep the entire experience silent, meaning absolutely no `<audio>` elements or music."
+  ]
+}
